@@ -163,7 +163,8 @@ body.show-grid .stage::before {
   transition: transform .8s cubic-bezier(.77, 0, .18, 1);
 }
 .hero__slide { flex: none; width: 100%; height: 100%; }
-.hero__slide img {
+.hero__slide img,
+.hero__slide video {
   width: 100%; height: 100%;
   object-fit: cover;        /* 화면을 꽉 채워. 비율이 다르면 가장자리가 잘려 */
   -webkit-user-drag: none;
@@ -353,6 +354,7 @@ body.show-grid .stage::before {
   width: auto;
   max-width: none;   /* 전체 img 규칙(max-width:100%)이 원을 줄이지 않게 */
   z-index: 0;
+  filter: hue-rotate(-6deg) brightness(.88);   /* 살짝 어둡고 보랏빛으로. 더 보라: -6 → -15 / 더 어둡게: .88 → .8 */
 }
 .library__title  { grid-column: 1 / span 3; margin: 24rem 0 0 6rem; position: relative; }
 .library__desc   { grid-column: 2 / span 3; margin: 27.5rem 0 0 6rem; width: 67rem; font-family: var(--font-body); font-weight: 300; font-size: 1.7rem; line-height: 1.7; position: relative; }
@@ -411,10 +413,10 @@ body.show-grid .stage::before {
 .orbit__path { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .orbit__path ellipse { fill: none; stroke: rgba(255,255,255,.22); stroke-width: .12; vector-effect: none; }
 .orbit__item { pointer-events: auto; display: flex; flex-direction: column; align-items: center; position: absolute; left: 0; top: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; will-change: transform, opacity; }
-.orbit__frame { display: block; width: 33rem; height: 49.5rem; border-radius: 2rem; overflow: hidden; background: radial-gradient(ellipse at 50% 40%, #4a0d15 0%, #1d0308 85%); box-shadow: 0 2rem 4rem rgba(0,0,0,.45); transition: box-shadow .4s ease; }
-.orbit__item:hover .orbit__frame { box-shadow: 0 2rem 4rem rgba(0,0,0,.45), 0 0 0 .2rem rgba(255,255,255,.55); }
+.orbit__frame { display: block; width: 43rem; height: 64.5rem; transition: filter .4s ease; }
+.orbit__item:hover .orbit__frame { filter: brightness(1.12); }
 .orbit__frame img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 1.6rem; box-sizing: border-box; }
-.orbit__frame img[src$="taste.png"] { padding: 0; object-fit: cover; }
+.orbit__frame img[src$="spoon_one.png"] { padding: 0; }
 .orbit__label { display: block; margin-top: 1.4rem; font-family: var(--font-serif); font-size: 2.4rem; letter-spacing: .04em; text-align: center; }
 .orbit__label i { font-style: normal; font-family: var(--font-body); font-size: 1.3rem; opacity: .6; margin-right: 1rem; vertical-align: .3em; }
 
