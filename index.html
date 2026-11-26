@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GULA – Bad Decisions</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css">
+
+  <!-- three.js (3D 뷰어용). 인터넷에서 불러와 -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 헤더 (고정) -->
+  <header class="header">
+    <a href="#top" class="header__logo" data-goto="0"><img src="images/logo.svg" alt="GULA"></a>
+    <nav class="header__nav">
+      <a href="#about" data-goto="about">ABOUT</a>
+      <a href="#signature" data-goto="signature">SIGNATURE</a>
+      <a href="#philosophy" data-goto="philosophy">BRAND</a>
+      <a href="#archive" data-goto="archive">ARCHIVE</a>
+    </nav>
+    <div class="header__icons">
+      <button aria-label="검색"><img src="images/search.svg" alt=""></button>
+      <button aria-label="마이페이지"><img src="images/mypage.svg" alt=""></button>
+      <button aria-label="좋아요"><img src="images/like.svg" alt=""></button>
+      <button aria-label="장바구니"><img src="images/cart.svg" alt=""></button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1. 히어로 -->
+    <section class="screen hero is-active" data-header="light">
+
+      <!-- 배경 전체 이미지 슬라이더: 이미지를 추가하려면 hero__slide 한 줄만 더 넣으면 돼 -->
+      <div class="hero__slider">
+        <div class="hero__track">
+          <div class="hero__slide"><img src="images/mainImg.png" alt="" draggable="false"></div>
+          <div class="hero__slide"><img src="images/mainImg2.png" alt="" draggable="false"></div>
+        </div>
+        <!-- 하단 바는 script.js가 이미지 개수만큼 자동으로 만들어 -->
+        <div class="hero__bar"></div>
+      </div>
+
+      <!-- 이미지 위에 올라가는 로고 -->
+      <div class="stage">
+        <h1 class="hero__logo"><img src="images/logo2.svg" alt="GULA – Bad Decisions"></h1>
+      </div>
+    </section>
+
+    <!-- 2. 소개 -->
+    <section id="about" class="screen intro" data-header="dark">
+      <div class="stage">
+        <!-- 큰 문장 + 사진 3장이 왼쪽 위에서 오른쪽 아래로 계단처럼 내려가는 구성 -->
+        <h2 class="intro__lead">GULA creates food built around<br>intensity, contrast, and excess.</h2>
+        <img class="intro__img3" src="images/dessertImg.png" alt="">
+        <img class="intro__img1" src="images/poster4.png" alt="">
+        <img class="intro__img2" src="images/packageImg.png" alt="">
+        <div class="intro__text">
+          <p>Each piece combines opposing flavors and textures, designed to unfold beyond its polished surface.</p>
+          <p>GULA는 야식에 담긴 욕망과 쾌락을 우아한 미식 경험으로 재해석하는 컬리너리 브랜드입니다. 하루의 끝, 낮 동안 유지해 온 절제에서 벗어나 죄책감 대신 솔직한 해방감을 선택하는 밤의 라이프스타일을 제안합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Signature (대표 제품) -->
+    <section id="signature" class="screen signature" data-header="light">
+      <div class="stage">
+        <h2 class="title title--red sig1__title">Signature</h2>
+
+        <!-- 3D 뷰어: viewer3d.js 가 models/signature.stl 을 불러와서 canvas 를 여기에 넣어.
+             로딩 전이나 실패했을 때는 3d.png 가 그대로 보여 -->
+        <div class="sig1__viewer">
+          <img class="sig1__fallback" src="images/3d.png" alt="RUBY CARNE" draggable="false">
+        </div>
+        <!-- 안내 문구: hints.js 가 data-hint-* 를 읽어서 보여주고 숨겨줘 (문구는 여기서 바꿔) -->
+        <p class="hint sig1__hint" data-hint-target=".sig1__viewer" data-hint-hide="drag"><span class="hint__in">360° Interactive View <i>—</i> Drag to explore</span></p>
+
+        <div class="sig1__text">
+          <h3 class="product__name">PORCELAIN BITE</h3>
+          <p class="product__desc">Crack the glossy porcelain shell<br>and let the rich, bold flavor spill out.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Signature (제품 2개) : 이미지에 마우스를 올리면 단면 이미지로 바뀜 -->
+    <section id="products" class="screen signature" data-header="light">
+      <div class="stage">
+        <article class="product sig2__left">
+          <h3 class="product__name">PEARL BEURRE</h3>
+          <p class="product__desc">Scallop Apple Caviar, veiled<br>in a delicate porcelain glaze.</p>
+          <p class="product__ko">순백의 절제된 형태 뒤에 농밀한 바다의 감칠맛을 숨긴 반전의 피스입니다.<br>버터의 녹진함과 생사과의 청량함이 교차하며, 묵직하지만 물리지 않는 밤의 미식을 완성합니다.</p>
+          <p class="product__tags">Savory &amp; Crisp · Velvety Rich · Briny Pop</p>
+          <div class="product__img swap">
+            <img class="swap__a" src="images/food1.png" alt="PEARL BEURRE">
+            <img class="swap__b" src="images/food1_half.png" alt="PEARL BEURRE 단면">
+          </div>
+        </article>
+        <article class="product sig2__right">
+          <h3 class="product__name">RUBY CARNE</h3>
+          <p class="product__desc">Cherry Mustard Beef, veiled<br>in a delicate porcelain glaze.</p>
+          <p class="product__ko">우아한 디저트의 외피와 묵직한 육류의 강렬한 대비를 구현한 시그니처 피스입니다.<br>매끄러운 크림슨 겉면을 스푼으로 깨뜨리는 순간, 진득한 육즙과 날카로운 산미가 폭발하듯 드러납니다.</p>
+          <p class="product__tags">Sour &amp; Spicy · Bold Kick · Juicy Depth</p>
+          <div class="product__img swap">
+            <img class="swap__a" src="images/food2.png" alt="RUBY CARNE">
+            <img class="swap__b" src="images/food2_half.png" alt="RUBY CARNE 단면">
+          </div>
+        </article>
+        <p class="hint sig2__hint" data-hint-target=".swap" data-hint-hide="hover"><span class="hint__in">Hover the image <i>—</i> See the inside</span></p>
+        <a href="#" class="btn btn--light sig2__more">View all</a>
+      </div>
+    </section>
+
+    <!-- 5. 스푼: 사진 3장이 왼쪽 아래에서 오른쪽 위로 계단처럼 올라가고, 글은 각 사진 바로 아래.
+         사진 둘은 임시 자리 박스야. 사진이 생기면 <div class="ph ..."> 를 <img class="..." src="images/…png" alt=""> 로 바꿔줘 -->
+    <section class="screen spoon" data-header="dark">
+      <div class="stage">
+        <img class="spoon__img1" src="images/sauce2.png" alt="">
+        <p class="spoon__text spoon__t1">Crafted to crown the main dish,<br>it teases the senses before<br>melting into a rich layer of flavor.</p>
+
+        <img class="spoon__img2" src="images/drink.png" alt="">
+        <p class="spoon__text spoon__t2">Breaking the taut top seal sparks<br>a brief tension before unleashing<br>a bold, lingering finish on the palate.</p>
+
+        <img class="spoon__img3" src="images/spoon3.png" alt="">
+        <p class="spoon__text spoon__t3">GULA’s signature spoon,<br>engineered for moments<br>of pure indulgence.</p>
+
+        <a href="#" class="btn spoon__btn">View all</a>
+      </div>
+    </section>
+
+    <!-- 6. Philosophy (새로 추가) -->
+    <section id="philosophy" class="screen philo" data-header="light">
+      <div class="stage">
+        <h2 class="title title--red philo__title">Philosophy</h2>
+
+        <div class="philo__text">
+          <p class="philo__en">GULA's square-pyramid package and its signature<br>form begin with the morning glory — an open petal curve<br>wrapping a single moment of pleasure,<br>distilled into four sharp triangular faces.</p>
+          <p class="philo__ko">GULA의 사각뿔 패키지와 시그니처의 형태는 나팔꽃에서 시작되었습니다.<br>활짝 열린 꽃잎의 곡선으로 한 입의 쾌락을 감싸고,<br>그 선을 가장 날카롭게 줄여 네 개의 삼각형 면으로 이룬 것이<br>사각뿔 패키지입니다.</p>
+        </div>
+
+        <div class="philo__row">
+          <figure class="philo__fig philo__a">
+            <img src="images/flowerphoto.png" alt="Morning glory">
+            <figcaption>01 — Morning Glory</figcaption>
+          </figure>
+
+          <div class="philo__mid">
+            <svg class="philo__morph" viewBox="0 0 600 556" fill="none" aria-hidden="true">
+              <path class="philo__line" d=""/>
+              <line class="philo__edge philo__edge--a"/>
+              <line class="philo__edge philo__edge--b"/>
+            </svg>
+            <p class="philo__stage">01 — Morning Glory</p>
+            <p class="hint philo__hint" data-hint-target=".philo__fig" data-hint-hide="hover"><span class="hint__in">Hover a photo<br>to see the transformation</span></p>
+          </div>
+
+          <figure class="philo__fig philo__b">
+            <img src="images/package_front.png" alt="Square pyramid package">
+            <figcaption>02 — Square Pyramid Package</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Package -->
+    <section class="screen package" data-header="light">
+      <div class="stage">
+        <h2 class="title title--red package__title">Package</h2>
+        <p class="package__desc">
+          굴라의 패키지는 음식을 담는 것을 넘어, 야식을 즐기는 순간까지 하나의 경험으로 이어지도록 설계되었습니다.<br>
+          메인 패키지부터 시즈닝 및 소스 패키지까지, 각 제품의 용도와 구성을 고려한 구조와 그래픽을 적용하여 브랜드의 일관된 시각적 경험을 완성합니다.
+        </p>
+        <!-- 도면: 치수 없는 package-clean.svg 위에, 치수선+숫자가 마우스를 따라 나타나 (packageDims.js) -->
+        <div class="package__img">
+          <div class="package__fig">
+            <img class="package__base" src="images/package-clean.svg" alt="package drawing">
+          </div>
+        </div>
+        <p class="hint package__hint" data-hint-target=".package__img" data-hint-hide="hover"><span class="hint__in">Hover the drawing <i>—</i> Reveal the dimensions</span></p>
+      </div>
+    </section>
+
+    <!-- 8. 로고 -->
+    <section class="screen brand" data-header="dark">
+      <div class="stage">
+        <!-- 오른쪽 휠 버튼: logoFx.js 가 항목(기본/스퀴즈/메탈릭/스티커/네온)을 만들어 -->
+        <div class="brand__wheel" tabindex="0" role="listbox" aria-label="로고 효과 선택"></div>
+        <!-- 로고: logoFx.js 가 canvas 를 여기에 넣고, 고른 효과에 따라 그려 -->
+        <div class="brand__fx" data-mode="basic"></div>
+        <p class="brand__text">
+          굴라의 로고는 클래식한 세리프의 우아함에 대담한 조형적 변주를 더해 완성되었습니다.<br>
+          극명한 획의 대비와 유기적으로 연결되는 글자의 형태는 우아함과 관능미를 동시에 드러냅니다.<br>
+          절제된 아름다움 속에 숨겨진 대담함. 굴라가 추구하는 욕망과 쾌락의 태도를 하나의 워드마크로 표현합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 9. Gula's library -->
+    <section id="archive" class="screen library" data-header="light">
+      <div class="stage">
+        <img class="library__circle" src="images/circle.png" alt="">
+        <h2 class="title title--white library__title">Gula's<br>library</h2>
+        <p class="library__desc">Click any word to view the picture.<br><br>Every word holds a hidden fragment of memory.<br>Explore the archive where language transforms into visual moments, capturing fleeting emotions and unseen stories behind each term.</p>
+        <img class="library__flower" src="images/poster1.png" alt="">
+        <ul class="library__list">
+          <li>Main Signature</li>
+          <li>brand</li>
+          <li>Mood</li>
+          <li>Model</li>
+          <li>Graphic</li>
+          <li>Spoon</li>
+          <li>Typography</li>
+        </ul>
+        <!-- 세로로 둥글게 도는 사진 갤러리: libraryWheel.js 가 사진을 넣어줘 (사진은 그 파일 맨 위 PHOTOS 에서 바꿔) -->
+        <div class="library__gallery"></div>
+        <p class="hint hint--dark library__hint" data-hint-target=".library__gallery" data-hint-hide="drag wheel click"><span class="hint__in">Scroll or drag<br>Click to enlarge</span></p>
+      </div>
+    </section>
+
+    <!-- Ritual : 사진 3장이 궤도를 돌고, 클릭하면 단계 설명이 열려 (ritualOrbit.js) -->
+    <section id="ritual" class="screen ritual" data-header="light">
+      <div class="stage">
+        <h2 class="ritual__title">Ritual</h2>
+
+        <div class="orbit" id="orbit">
+          <svg class="orbit__path" viewBox="0 0 256 144" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="128" cy="66" rx="84" ry="26" transform="rotate(-6 128 66)"/></svg>
+
+          <button type="button" class="orbit__item" data-no="01" data-title="Crack"
+            data-text="Tap the glossy shell with the spoon. A hairline opens."
+            data-sub="RUBY CARNE — Cherry Mustard Beef, veiled in a delicate porcelain glaze.">
+            <span class="orbit__frame"><img src="images/food2.png" alt="RUBY CARNE"></span>
+            <span class="orbit__label"><i>01</i>Crack</span>
+          </button>
+          <button type="button" class="orbit__item" data-no="02" data-title="Spill"
+            data-text="Layers of beef, cherry and mustard give way at once."
+            data-sub="Pepper-Crusted Beef · Salt-Cured Cherry · Charred Sweet Onion · Whole Grain Mustard">
+            <span class="orbit__frame"><img src="images/food2_half.png" alt="RUBY CARNE 단면"></span>
+            <span class="orbit__label"><i>02</i>Spill</span>
+          </button>
+          <button type="button" class="orbit__item" data-no="03" data-title="Taste"
+            data-text="Sharp first, then deep. One bite is all it takes."
+            data-sub="Sour &amp; Spicy · Bold Kick · Juicy Depth">
+            <span class="orbit__frame"><img src="images/taste.png" alt=""></span>
+            <span class="orbit__label"><i>03</i>Taste</span>
+          </button>
+
+          <div class="orbit__panel" aria-live="polite">
+            <span class="orbit__no"></span>
+            <h3 class="orbit__name"></h3>
+            <p class="orbit__text"></p>
+            <p class="orbit__sub"></p>
+            <span class="orbit__back">Click again to keep orbiting</span>
+          </div>
+          <p class="orbit__hint">Click a photo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. 마지막 한 장 : 사진 한 장 + 짧은 글, 브랜드 무드만 -->
+    <section class="screen last" data-header="dark">
+      <div class="stage">
+        <figure class="last__img"><img src="images/last.jpg" alt=""></figure>
+        <div class="last__text">
+          <p class="last__brand">GULA — Bad Decisions</p>
+          <p class="last__desc">Crack the glossy porcelain shell<br>and let the rich, bold flavor spill out.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 14. 푸터 : 브랜드 푸터 + 졸업 프로젝트 정보.  [대괄호] 로 된 곳은 실제 내용으로 바꿔줘 -->
+  <footer class="screen screen--half footer" data-header="light">
+    <div class="stage stage--half">
+      <img class="footer__logo" src="images/logo.svg" alt="GULA">
+
+      <nav class="footer__col footer__explore">
+        <h4>Explore</h4>
+        <a href="#about" data-goto="about">About</a>
+        <a href="#signature" data-goto="signature">Signature</a>
+        <a href="#philosophy" data-goto="philosophy">Brand</a>
+        <a href="#archive" data-goto="archive">Archive</a>
+        <a href="#ritual" data-goto="ritual">Ritual</a>
+      </nav>
+
+      <div class="footer__col footer__contact">
+        <h4>Contact</h4>
+        <a href="mailto:contact@gula.com">contact@gula.com</a>
+        <a href="#">Instagram</a>
+      </div>
+
+      <div class="footer__col footer__grad">
+        <h4>Graduation Project 2026</h4>
+        <span class="footer__sub footer__sub--first">Team · BX Designers</span>
+        <div class="member">
+          <strong>박영채 <i>Park Youngchae</i></strong>
+          <span class="member__links"><a href="mailto:parkyoungchae2002@gmail.com">Email</a><a href="https://www.behance.net/2d9ab8ce" target="_blank" rel="noopener">Behance</a><a href="https://www.instagram.com/000_chaeya/" target="_blank" rel="noopener">Instagram</a></span>
+        </div>
+        <div class="member">
+          <strong>송하림 <i>Song Harim</i></strong>
+          <span class="member__links"><a href="mailto:soopoolh@gmail.com">Email</a><a href="https://www.behance.net/70561bd6" target="_blank" rel="noopener">Behance</a><a href="https://www.instagram.com/soop.ool/" target="_blank" rel="noopener">Instagram</a></span>
+        </div>
+        <div class="member">
+          <strong>심희우 <i>Sim Heewoo</i></strong>
+          <span class="member__links"><a href="mailto:heewoosim@gmail.com">Email</a><a href="https://www.behance.net/heewoosim" target="_blank" rel="noopener">Behance</a><a href="https://www.instagram.com/smheewoo/" target="_blank" rel="noopener">Instagram</a></span>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 GULA — A fictional brand made for a graduation project.</span>
+        <span class="footer__legal"><a href="#top" data-goto="0">Back to top ↑</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="logoFx.js"></script>
+  <script src="libraryWheel.js"></script>
+  <script src="packageDims.js"></script>
+  <script src="hints.js"></script>
+  <script src="philoMorph.js"></script>
+  <script src="ritualOrbit.js"></script>
+  <script type="module" src="viewer3d.js"></script>
+</body>
+</html>
